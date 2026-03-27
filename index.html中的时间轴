@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D时间轴轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Microsoft Yahei", sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        /* 顶部标题 */
+        .top-title {
+            position: absolute;
+            top: 15px;
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+            letter-spacing: 2px;
+        }
+        /* 中央水印 */
+        .watermark {
+            position: absolute;
+            top: 120px;
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 4px;
+        }
+        /* 3D 轮播容器 */
+        .carousel {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            perspective: 1200px;
+            margin-top: 60px;
+        }
+        .carousel-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+        /* 立体卡片样式（正面+侧面） */
+        .carousel-item {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            backface-visibility: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        /* 卡片侧面（立体厚度） */
+        .carousel-item::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            transform: rotateY(90deg) translateZ(100px) translateX(4px);
+            transform-origin: left;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .year-text {
+            position: relative;
+            z-index: 1;
+            font-size: 48px;
+            color: #fff;
+            text-align: center;
+            margin-top: 120px;
+            text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+        }
+        .desc-text {
+            position: relative;
+            z-index: 1;
+            font-size: 11px;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            padding: 0 8px;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+        }
+        /* 控制按钮 */
+        .controls {
+            position: absolute;
+            bottom: 60px;
+            display: flex;
+            gap: 60px;
+        }
+        .control-btn {
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            border: none;
+            color: black;
+            font-size: 32px;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        .control-btn:hover {
+            transform: scale(1.15);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-title">rednewspaper</div>
+    <div class="watermark">rednewspaper</div>
+    <div class="carousel">
+        <div class="carousel-wrapper" id="carouselWrapper">
+            
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red1.jpg" alt="1yue">
+                <div class="year-text">1yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            
+            <div class="carousel-item" style="transform: rotateY(72deg) translateZ(275px);">
+                <img src="./img/red10.webp" alt="2yue">
+                <div class="year-text">2yue</div>
+                <div class="desc-text">In the year 2017 I reached the age of 16</div>
+            </div>
+           
+            <div class="carousel-item" style="transform: rotateY(144deg) translateZ(275px);">
+                <img src="./img/red11.webp" alt="3yue">
+                <div class="year-text">3yue</div>
+                <div class="desc-text">In the year 2018 I reached the age of 17</div>
+            </div>
+            
+            <div class="carousel-item" style="transform: rotateY(216deg) translateZ(275px);">
+                <img src="./img/red12.jpg" alt="4yue">
+                <div class="year-text">4yue</div>
+                <div class="desc-text">In the year 2019 I reached the age of 18</div>
+            </div>
+            
+            <div class="carousel-item" style="transform: rotateY(288deg) translateZ(275px);">
+                <img src="./img/red2.jpg" alt="5yue">
+                <div class="year-text">5yue</div>
+                <div class="desc-text">In the year 2020 I reached the age of 19</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red4.jpg" alt="6yue">
+                <div class="year-text">6yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red4.jpg" alt="7yue">
+                <div class="year-text">7yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red9.webp" alt="8yue">
+                <div class="year-text">8yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red7.webp" alt="9yue">
+                <div class="year-text">9yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red5.jpg" alt="10yue">
+                <div class="year-text">10yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red6.jpg" alt="11yue">
+                <div class="year-text">11yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+            <div class="carousel-item" style="transform: rotateY(0deg) translateZ(275px);">
+                <img src="./img/red7.webp" alt="12yue">
+                <div class="year-text">12yue</div>
+                <div class="desc-text">In the year 2016 I reached the age of 15</div>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <button class="control-btn" id="prevBtn">&lt;</button>
+        <button class="control-btn" id="nextBtn">&gt;</button>
+    </div>
+
+    <script>
+        const wrapper = document.getElementById('carouselWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentRotation = 0;
+        const rotationStep = 72; // 360° / 5 张卡片
+        let autoPlayInterval;
+
+        // 下一张
+        nextBtn.addEventListener('click', () => {
+            currentRotation -= rotationStep;
+            wrapper.style.transform = `rotateY(${currentRotation}deg)`;
+            resetAutoPlay();
+        });
+
+        // 上一张
+        prevBtn.addEventListener('click', () => {
+            currentRotation += rotationStep;
+            wrapper.style.transform = `rotateY(${currentRotation}deg)`;
+            resetAutoPlay();
+        });
+
+        // 自动播放
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                currentRotation -= rotationStep;
+                wrapper.style.transform = `rotateY(${currentRotation}deg)`;
+            }, 3500);
+        }
+
+        // 重置自动播放
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        // 初始化
+        startAutoPlay();
+    </script>
+</body>
+</html>

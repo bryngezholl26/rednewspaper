@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册 - 红报</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="tabs">
+                <button class="tab-btn active" id="loginTab">登录</button>
+                <button class="tab-btn" id="registerTab">注册</button>
+            </div>
+            <!-- 登录表单 -->
+            <form id="loginForm" class="form active">
+                <h2>欢迎回来</h2>
+                <input type="email" placeholder="邮箱" required>
+                <input type="password" placeholder="密码" required>
+                <button type="submit">登录</button>
+            </form>
+            <!-- 注册表单 -->
+            <form id="registerForm" class="form">
+                <h2>创建新账户</h2>
+                <input type="text" placeholder="用户名" required>
+                <input type="email" placeholder="邮箱" required>
+                <input type="password" placeholder="密码" required>
+                <button type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+</html>

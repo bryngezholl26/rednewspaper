@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色日报 - 报刊架</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 左侧侧边栏 -->
+        <div id="sidebar-container"></div>
+        
+        <!-- 右侧主体 -->
+        <div class="main-content">
+            <!-- 顶部标题栏 -->
+            <div class="top-header-bar">
+                <div class="spacer"></div>
+                <div class="title-section">
+                    <h1>红色日报·报刊架</h1>
+                    <p class="sub-title">总五十二卷·岁月峥嵘</p>
+                </div>
+                <div class="header-buttons">
+                    <button class="btn-icon">🔍 搜索</button>
+                    <button class="btn-icon">📅 日历</button>
+                </div>
+            </div>
+
+            <!-- 历史今日栏 -->
+            <div class="history-bar">
+                <span>历史上的今天：</span>
+                <input type="text" class="date-input" value="1935/01/15">
+                <button class="btn-read-small">阅读当日报纸</button>
+            </div>
+
+            <!-- 主内容区：报刊卡片 -->
+            <main class="app-main">
+                <div class="newspaper-volume-card">
+                    <div class="volume-title">第1卷·1935年1月<br>第1周</div>
+                    <div class="volume-date">1935-01-01 至 1935-01-07</div>
+                    <div class="volume-info">共 2 期</div>
+                    <button class="btn-read">浏览本卷</button>
+                </div>
+
+                <div class="newspaper-volume-card">
+                    <div class="volume-title">第2卷·1935年1月<br>第2周</div>
+                    <div class="volume-date">1935-01-08 至 1935-01-14</div>
+                    <div class="volume-info">共 2 期</div>
+                    <button class="btn-read">浏览本卷</button>
+                </div>
+
+                <div class="newspaper-volume-card">
+                    <div class="volume-title">第3卷·1935年1月<br>第3周</div>
+                    <div class="volume-date">1935-01-15 至 1935-01-21</div>
+                    <div class="volume-info">共 3 期</div>
+                    <button class="btn-read">浏览本卷</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadComponent('sidebar-container', 'components/sidebar.html');
+        });
+    </script>
+</body>
+</html>

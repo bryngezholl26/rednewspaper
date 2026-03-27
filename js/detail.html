@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卷详情 - 红报</title>
+    <link rel="stylesheet" href="css/detail.css">
+    <script src="js/api.js"></script>
+    <script src="js/newspaper-interaction.js" defer></script>
+</head>
+<body>
+    <header class="detail-header">
+        <div class="header-content">
+            <a href="index.html" class="back-btn">← 返回首页</a>
+            <h1 class="header-title">红报详情</h1>
+        </div>
+    </header>
+
+    <main class="detail-main">
+        <section class="volume-header">
+            <h2 id="volume-title" class="volume-title">加载中...</h2>
+            <div id="volume-meta" class="volume-meta">
+                <span>发布时间：加载中</span>
+                <span>作者：加载中</span>
+                <span>阅读量：加载中</span>
+            </div>
+        </section>
+
+        <section class="volume-content">
+            <div class="content-img">
+                <img id="volume-cover" src="https://picsum.photos/800/400" alt="卷封面">
+            </div>
+            <div id="volume-content-text" class="content-text">
+                <p>内容加载中...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="detail-footer">
+        <p>© 2026 红报 版权所有</p>
+    </footer>
+</body>
+</html>

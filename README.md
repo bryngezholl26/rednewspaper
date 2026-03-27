@@ -1,2 +1,0 @@
-# rednewspaper
-rednewspaper
